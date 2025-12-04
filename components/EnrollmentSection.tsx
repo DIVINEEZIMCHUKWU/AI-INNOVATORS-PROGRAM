@@ -21,6 +21,9 @@ export const EnrollmentSection: React.FC = () => {
     setIsSubmitted(false);
 
     try {
+      console.log('Submitting form to:', 'https://aiinnovatorsprogram.vercel.app/api/register');
+      console.log('Form data:', { studentName: formState.studentName, parentName: formState.parentName, age: formState.age, email: formState.email, phone: formState.phone, goal: formState.goal });
+      
       const response = await fetch('https://aiinnovatorsprogram.vercel.app/api/register', {
         method: 'POST',
         headers: {
@@ -36,11 +39,26 @@ export const EnrollmentSection: React.FC = () => {
         }),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
       if (!response.ok) {
-        const data = await response.json().catch(() => null);
-        const message = data?.message || 'Unable to submit form right now. Please try again.';
+        const errorText = await response.text();
+        console.error('Response error text:', errorText);
+        
+        let data;
+        try {
+          data = JSON.parse(errorText);
+        } catch {
+          data = { message: `Server returned ${response.status}: ${errorText}` };
+        }
+        
+        const message = data?.message || `Server error: ${response.status}`;
         throw new Error(message);
       }
+
+      const data = await response.json();
+      console.log('Response data:', data);
 
       setIsSubmitted(true);
     } catch (error) {
