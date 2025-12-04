@@ -1,5 +1,5 @@
 import React from 'react';
-import { MODULES, WHATSAPP_URL } from '../constants';
+import { MODULES, WHATSAPP_URL, TECH_KID_IMAGES } from '../constants';
 import { MessageCircle } from 'lucide-react';
 
 export const ModulesSection: React.FC = () => {
@@ -32,7 +32,8 @@ export const ModulesSection: React.FC = () => {
               className={`flex flex-col lg:flex-row gap-10 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
             >
               {/* Visual / Icon Side */}
-              <div className="w-full lg:w-1/3 sticky top-24">
+              <div className="w-full lg:w-1/3">
+
                 <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 text-center lg:text-left">
                   <div className="w-16 h-16 mx-auto lg:mx-0 bg-brand-50 rounded-xl flex items-center justify-center mb-6 text-brand-600">
                     <module.icon className="w-8 h-8" />
@@ -42,6 +43,15 @@ export const ModulesSection: React.FC = () => {
                   </span>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">{module.title}</h3>
                   <p className="text-slate-500 font-medium">{module.subtitle}</p>
+
+                  {/* Visual for this module using remaining TECH_KID_IMAGES[6-8] */}
+                  <div className="mt-6">
+                    <img
+                      src={TECH_KID_IMAGES[6 + (index % 3)]}
+                      alt="AI learning visual"
+                      className="w-full h-40 object-cover rounded-xl shadow-md"
+                    />
+                  </div>
                   
                   <div className="mt-6 pt-6 border-t border-slate-100 lg:hidden">
                      <a href={WHATSAPP_URL} className="text-sm text-green-600 font-semibold flex items-center justify-center gap-2">

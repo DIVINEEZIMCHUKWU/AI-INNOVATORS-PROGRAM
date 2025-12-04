@@ -23,19 +23,23 @@ export const PRICING = "₦35,000";
 
 // Curated images with African/Black representation in Tech/Education
 // Mapped to the user's specific request:
-// 0: Headphone/AI Kid (Hero)
-// 1: Father & Son (Hero)
-// 2: Podcast/Mic Kid (Hero)
-// 3: Teacher/Presentation (Hero)
-// 4: Group Laptop (Overview)
-// 5: Happy Coding Kid (Overview)
+// 0: Kid with VR headset (Hero)
+// 1: Kid with headphones (Hero)
+// 2: Kid with microphone (Hero)
+// 3: Kid with VR headset and controllers (Hero)
+// 4: Kid with headphones and screen (Overview)
+// 5: Kid with VR headset (Overview)
+// 6-8: Additional images for other sections
 export const TECH_KID_IMAGES = [
-  "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1740&auto=format&fit=crop", // Hero 1: AI/Headphones (Futuristic)
-  "https://images.unsplash.com/photo-1616531770192-6eaea74c2456?q=80&w=1740&auto=format&fit=crop", // Hero 2: Father helping son
-  "https://plus.unsplash.com/premium_photo-1682125773446-259ce64f9dd7?q=80&w=1740&auto=format&fit=crop", // Hero 3: Podcast/Media Kid
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1740&auto=format&fit=crop", // Hero 4: Presentation/Teacher
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1740&auto=format&fit=crop", // Overview 1: Group Collaboration
-  "https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?q=80&w=1740&auto=format&fit=crop", // Overview 2: Happy Student
+  "/images/Whisk_484d88912117c2596e147d748c031dfadr.jpeg",
+  "/images/Whisk_9a05ffa371852d9971e40f14e51e41b5dr.jpeg",
+  "/images/Whisk_a1b0b62f99167fea1424d330e77d6874dr.jpeg",
+  "/images/Whisk_ac0d20fad759e9a8f95439a1a7b5694bdr.jpeg",
+  "/images/Whisk_ae69f2a8aef60f09b644f79ea5c32f79dr.jpeg",
+  "/images/Whisk_beda12dfe77716fb67b439cf9cb8f33ddr.jpeg",
+  "/images/Whisk_d665ed21bf095459dde451c402e66024dr.jpeg",
+  "/images/Whisk_ed6893e67582810a4e24d512fd118dc0dr.jpeg",
+  "/images/Whisk_umy5kznxemzmv2yw0izwqjytkdoxqtlhvmmm1co.jpeg"
 ];
 
 export const SYLLABUS_CONTEXT = `

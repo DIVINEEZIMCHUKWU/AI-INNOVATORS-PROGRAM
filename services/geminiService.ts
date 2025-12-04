@@ -1,9 +1,37 @@
 import { GoogleGenAI } from "@google/genai";
 import { SYLLABUS_CONTEXT } from '../constants';
 
+// Add type definition for import.meta.env
+declare global {
+  interface ImportMeta {
+    env: {
+      VITE_GEMINI_API_KEY?: string;
+    };
+  }
+}
+
+// Get API key with fallbacks
+const getApiKey = (): string => {
+  // 1. Check Vite environment variables (for local development)
+  if (import.meta.env.VITE_GEMINI_API_KEY) {
+    return import.meta.env.VITE_GEMINI_API_KEY;
+  }
+  // 2. Check Create React App environment variables
+  if (process.env.REACT_APP_GEMINI_API_KEY) {
+    return process.env.REACT_APP_GEMINI_API_KEY;
+  }
+  // 3. Check Node/Cloud environment variables
+  if (process.env.API_KEY) {
+    return process.env.API_KEY;
+  }
+  // 4. Hardcoded fallback (for local development only)
+  return "AIzaSyDrLBA6qnaSb2-NZMb0tnGN8sEj9EVxA18";
+};
+
 // Initialize the Gemini API client
-// The API key is expected to be in the environment variable process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ 
+  apiKey: getApiKey() 
+});
 
 export const generateAIResponse = async (userMessage: string): Promise<string> => {
   try {

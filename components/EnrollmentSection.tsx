@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+
 import { WHATSAPP_URL, CONTACT_EMAIL } from '../constants';
 import { CheckCircle, Send, MessageCircle, Tag } from 'lucide-react';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
 export const EnrollmentSection: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -22,7 +25,7 @@ export const EnrollmentSection: React.FC = () => {
       // Attempt to send data to the backend server
       // Note: In this preview environment, this request will likely fail because the 
       // server.js is not running. We catch the error and simulate success for the demo.
-      const response = await fetch('http://localhost:5000/api/register', {
+      const response = await fetch(`${API_BASE_URL}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,9 +110,9 @@ export const EnrollmentSection: React.FC = () => {
               
               {/* Discount Logic */}
               <div className="flex flex-col mb-6 border-b border-dashed border-slate-200 pb-6">
-                <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-5xl font-bold text-brand-600">₦30,000</span>
-                  <span className="text-xl text-slate-400 line-through decoration-red-500">₦35,000</span>
+                <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 mb-1">
+                  <span className="text-4xl sm:text-5xl font-bold text-brand-600">₦30,000</span>
+                  <span className="text-lg sm:text-xl text-slate-400 line-through decoration-red-500">₦35,000</span>
                 </div>
                 <div className="flex items-center gap-2 text-red-500 font-bold text-sm animate-pulse">
                   <Tag className="w-4 h-4" />
