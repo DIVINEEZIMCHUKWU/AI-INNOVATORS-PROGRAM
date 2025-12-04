@@ -21,7 +21,7 @@ export const EnrollmentSection: React.FC = () => {
     setIsSubmitted(false);
 
     try {
-      const response = await fetch('https://aiinnovatorprogram.vercel.app/api/register', {
+      const response = await fetch('https://aiinnovatorsprogram.vercel.app/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
