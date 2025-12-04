@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { WHATSAPP_URL, CONTACT_EMAIL } from '../constants';
 import { CheckCircle, Send, MessageCircle, Tag } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-
 export const EnrollmentSection: React.FC = () => {
   const [formState, setFormState] = useState({
     parentName: '',
@@ -20,33 +18,38 @@ export const EnrollmentSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSubmitted(false);
 
     try {
-      // Attempt to send data to the backend server
-      // Note: In this preview environment, this request will likely fail because the 
-      // server.js is not running. We catch the error and simulate success for the demo.
-      const response = await fetch(`${API_BASE_URL}/api/register`, {
+      const response = await fetch('https://aiinnovatorprogram.vercel.app/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formState),
+        body: JSON.stringify({
+          studentName: formState.studentName,
+          parentName: formState.parentName,
+          age: formState.age,
+          email: formState.email,
+          phone: formState.phone,
+          goal: formState.goal,
+        }),
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        throw new Error('Server response not ok');
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        const message = data?.message || 'Unable to submit form right now. Please try again.';
+        throw new Error(message);
       }
-    } catch (error) {
-      // FALLBACK FOR DEMO/PREVIEW:
-      // Since the backend server isn't running in this browser preview, 
-      // we simulate a successful submission so you can see the Success UI.
-      console.warn("Backend not reachable (expected in preview). Simulating success state.");
-      
-      // Artificial delay to simulate network request
-      await new Promise(resolve => setTimeout(resolve, 1500));
+
       setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting registration form:', error);
+      alert(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong while submitting the form. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
