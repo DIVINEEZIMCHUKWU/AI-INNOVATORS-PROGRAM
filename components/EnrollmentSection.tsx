@@ -21,6 +21,11 @@ export const EnrollmentSection: React.FC = () => {
     setIsSubmitted(false);
 
     try {
+      // Safety check - ensure formState exists
+      if (!formState) {
+        throw new Error('Form state is not initialized');
+      }
+      
       console.log('Submitting form to:', 'https://aiinnovatorsprogrammes.vercel.app/api/register');
       console.log('Form data:', { studentName: formState.studentName, parentName: formState.parentName, age: formState.age, email: formState.email, phone: formState.phone, goal: formState.goal });
       
@@ -74,10 +79,10 @@ export const EnrollmentSection: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormState({
-      ...formState,
+    setFormState(prevState => ({
+      ...prevState,
       [e.target.name]: e.target.value
-    });
+    }));
   };
 
   if (isSubmitted) {
@@ -90,7 +95,7 @@ export const EnrollmentSection: React.FC = () => {
             </div>
             <h2 className="text-3xl font-bold mb-4">Registration Received!</h2>
             <p className="text-brand-100 mb-8 text-lg">
-              Thank you for registering {formState.studentName}. We have received your details securely.
+              Thank you for registering {formState?.studentName || 'the student'}. We have received your details securely.
               <br/><br/>
               Our team will review your application and contact you shortly via WhatsApp to finalize the enrollment.
             </p>
