@@ -1,5 +1,12 @@
 const { GoogleGenAI } = require("@google/genai");
-const { SYLLABUS_CONTEXT } = require('../constants.js');
+
+// Embedded context to avoid import issues
+const SYLLABUS_CONTEXT = `
+AI Young Innovators Program: Weekend virtual training for ages 7-20+.
+5 modules: Web DevAI, Learning AI, Multimedia, Design, Advanced Skills.
+Requirements: Computer, internet, parental consent.
+Contact: WhatsApp 234812565024 or skillhivedigitalagency@gmail.com
+`;
 
 // Initialize Gemini with server-side API key
 const ai = new GoogleGenAI({ 
