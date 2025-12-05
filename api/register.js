@@ -15,7 +15,11 @@ module.exports = async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
+    return res.status(405).json({ 
+      message: 'Method Not Allowed',
+      allowed: ['POST', 'OPTIONS'],
+      received: req.method
+    });
   }
 
   console.log('Received registration request (Vercel API):', req.body);

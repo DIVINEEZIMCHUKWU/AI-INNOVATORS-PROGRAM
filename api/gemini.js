@@ -25,16 +25,33 @@ module.exports = async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
+    return res.status(405).json({ 
+      message: 'Method Not Allowed',
+      allowed: ['POST', 'OPTIONS'],
+      received: req.method
+    });
   }
+
+  console.log('Gemini API called with body:', req.body);
 
   const { message } = req.body || {};
 
   if (!message) {
+    console.error('No message provided in request');
     return res.status(400).json({ message: 'Message is required' });
   }
 
+  // Check if API key is available
+  if (!process.env.GEMINI_API_KEY) {
+    console.error('GEMINI_API_KEY is not set in environment variables');
+    return res.status(500).json({ 
+      message: 'API key not configured',
+      error: 'GEMINI_API_KEY environment variable is missing'
+    });
+  }
+
   try {
+    console.log('Initializing Gemini with API key...');
     const model = 'gemini-2.5-flash';
     
     const response = await ai.models.generateContent({
@@ -58,14 +75,21 @@ module.exports = async function handler(req, res) {
       }
     });
 
+    console.log('Gemini response generated successfully');
     return res.status(200).json({ 
       response: response.text || "I apologize, I couldn't generate a response at this time."
     });
 
   } catch (error) {
     console.error("Gemini API Error:", error);
+    console.error("Error details:", {
+      message: error.message,
+      stack: error.stack,
+      status: error.status
+    });
     return res.status(500).json({ 
-      message: "I'm having trouble connecting to my AI brain right now. Please try again in a moment."
+      message: "I'm having trouble connecting to my AI brain right now. Please try again in a moment.",
+      error: error.message
     });
   }
 }

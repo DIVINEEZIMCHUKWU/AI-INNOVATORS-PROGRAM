@@ -21,10 +21,10 @@ export const EnrollmentSection: React.FC = () => {
     setIsSubmitted(false);
 
     try {
-      console.log('Submitting form to:', 'https://aiinnovator.vercel.app/api/register');
+      console.log('Submitting form to:', 'https://ainnovator.vercel.app/api/register');
       console.log('Form data:', { studentName: formState.studentName, parentName: formState.parentName, age: formState.age, email: formState.email, phone: formState.phone, goal: formState.goal });
       
-      const response = await fetch('https://aiinnovator.vercel.app/api/register', {
+      const response = await fetch('https://ainnovator.vercel.app/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,10 +74,10 @@ export const EnrollmentSection: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormState({
-      ...formState,
+    setFormState(prevState => ({
+      ...prevState,
       [e.target.name]: e.target.value
-    });
+    }));
   };
 
   if (isSubmitted) {
