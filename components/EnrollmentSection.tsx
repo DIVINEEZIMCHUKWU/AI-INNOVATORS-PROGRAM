@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { WHATSAPP_URL, CONTACT_EMAIL } from '../constants';
 import { CheckCircle, Send, MessageCircle, Tag } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-
 export const EnrollmentSection: React.FC = () => {
   const [formState, setFormState] = useState({
     parentName: '',

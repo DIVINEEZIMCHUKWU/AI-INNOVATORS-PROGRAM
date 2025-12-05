@@ -1,7 +1,13 @@
-const { Resend } = require('resend');
+// Try dynamic import for better compatibility
+let Resend;
+try {
+  Resend = require('resend');
+} catch (error) {
+  console.error('Resend not available:', error);
+}
 
 // Initialize Resend client with API key from Vercel / env
-const resend = new Resend(process.env.RESEND_API_KEY || '');
+const resend = Resend ? new Resend(process.env.RESEND_API_KEY || '') : null;
 
 module.exports = async function handler(req, res) {
   // Set CORS headers for all requests
@@ -54,6 +60,15 @@ Date: ${new Date().toLocaleString()}
   `;
 
   try {
+    // Check if Resend is available
+    if (!resend) {
+      console.error('Resend not available - cannot send emails');
+      return res.status(500).json({
+        success: false,
+        message: 'Email service not available. Please contact support directly.',
+      });
+    }
+
     // Send admin notification email
     console.log('Sending admin notification email...');
     const adminEmail = await resend.emails.send({
