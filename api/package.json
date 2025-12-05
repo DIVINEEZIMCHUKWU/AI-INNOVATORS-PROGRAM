@@ -1,8 +1,0 @@
-{
-  "name": "api-functions",
-  "version": "1.0.0",
-  "dependencies": {
-    "resend": "^6.5.2",
-    "@google/genai": "^1.30.0"
-  }
-}
