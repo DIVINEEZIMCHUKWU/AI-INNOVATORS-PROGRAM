@@ -1,13 +1,22 @@
-const { Resend } = require('resend');
+import { Resend } from 'resend';
 
 // Initialize Resend client with API key from Vercel / env
 const resend = new Resend(process.env.RESEND_API_KEY || '');
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // Set CORS headers for all requests
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = req.headers.origin;
+  const allowedOrigins = ['https://innovator.name.ng', 'https://ainnovator.vercel.app'];
+  
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+  
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   // Handle preflight request
   if (req.method === 'OPTIONS') {
