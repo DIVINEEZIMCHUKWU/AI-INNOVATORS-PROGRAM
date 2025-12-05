@@ -43,24 +43,10 @@ export const TECH_KID_IMAGES = [
 ];
 
 export const SYLLABUS_CONTEXT = `
-AI Young Innovators Program - Weekend Virtual Training
-
-Program Overview:
-- Ages 7-20 (Adults welcome)
-- 100% Virtual training 
-- Project-based learning
-- Weekend schedule (no academic disruption)
-
-5 Modules:
-1. Web Development & AI: Build websites and mini-games using AI tools
-2. AI for Learning: Research assistant, text-to-speech, AI quizzes/flashcards  
-3. Multimedia Creation: AI video production, podcasts, animations
-4. Visual Design: AI presentations, image generation, storybook creation
-5. Advanced Skills: AI music creation, prompt engineering, flyer design
-
-Requirements: Computer/Tablet, Internet, Parental consent
-
-Contact: WhatsApp 2348125650249 | Email skillhivedigitalagency@gmail.com
+AI Young Innovators Program: Weekend virtual training for ages 7-20+.
+5 modules: Web DevAI, Learning AI, Multimedia, Design, Advanced Skills.
+Requirements: Computer, internet, parental consent.
+Contact: WhatsApp 234812565024 or skillhivedigitalagency@gmail.com
 `;
 
 export const MODULES: CourseModule[] = [

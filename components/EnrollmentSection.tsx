@@ -20,33 +20,56 @@ export const EnrollmentSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSubmitted(false);
 
     try {
-      // Attempt to send data to the backend server
-      // Note: In this preview environment, this request will likely fail because the 
-      // server.js is not running. We catch the error and simulate success for the demo.
-      const response = await fetch(`${API_BASE_URL}/api/register`, {
+      console.log('Submitting form to:', 'https://aiinnovatorsprogrames.vercel.app/api/register');
+      console.log('Form data:', { studentName: formState.studentName, parentName: formState.parentName, age: formState.age, email: formState.email, phone: formState.phone, goal: formState.goal });
+      
+      const response = await fetch('https://aiinnovatorsprogrames.vercel.app/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formState),
+        body: JSON.stringify({
+          studentName: formState.studentName,
+          parentName: formState.parentName,
+          age: formState.age,
+          email: formState.email,
+          phone: formState.phone,
+          goal: formState.goal,
+        }),
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        throw new Error('Server response not ok');
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Response error text:', errorText);
+        
+        let data;
+        try {
+          data = JSON.parse(errorText);
+        } catch {
+          data = { message: `Server returned ${response.status}: ${errorText}` };
+        }
+        
+        const message = data?.message || `Server error: ${response.status}`;
+        throw new Error(message);
       }
-    } catch (error) {
-      // FALLBACK FOR DEMO/PREVIEW:
-      // Since the backend server isn't running in this browser preview, 
-      // we simulate a successful submission so you can see the Success UI.
-      console.warn("Backend not reachable (expected in preview). Simulating success state.");
-      
-      // Artificial delay to simulate network request
-      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      const data = await response.json();
+      console.log('Response data:', data);
+
       setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting registration form:', error);
+      alert(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong while submitting the form. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
