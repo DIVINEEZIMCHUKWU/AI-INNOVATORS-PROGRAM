@@ -43,41 +43,24 @@ export const TECH_KID_IMAGES = [
 ];
 
 export const SYLLABUS_CONTEXT = `
+AI Young Innovators Program - Weekend Virtual Training
+
 Program Overview:
-This weekend program is designed to equip young learners with practical, future-ready skills in Artificial Intelligence (AI) and digital creation. Through a project-based approach, students will move from being consumers of technology to becoming confident creators, learning to use AI tools responsibly to build, innovate, and express their ideas.
+- Ages 7-20 (Adults welcome)
+- 100% Virtual training 
+- Project-based learning
+- Weekend schedule (no academic disruption)
 
-Key Highlight: The training is completely VIRTUAL and designed to NOT disrupt academic activities.
+5 Modules:
+1. Web Development & AI: Build websites and mini-games using AI tools
+2. AI for Learning: Research assistant, text-to-speech, AI quizzes/flashcards  
+3. Multimedia Creation: AI video production, podcasts, animations
+4. Visual Design: AI presentations, image generation, storybook creation
+5. Advanced Skills: AI music creation, prompt engineering, flyer design
 
-Module 1: Foundations of AI & Web Development
-- Building Real Web Applications & Websites: Introduction to web development concepts using AI-powered platforms to design, build, and publish simple, functional websites.
-- Creating Mini-Games: Applying logic and creative thinking to build fun, interactive mini-games using proven AI models.
+Requirements: Computer/Tablet, Internet, Parental consent
 
-Module 2: AI-Powered Learning & Academic Excellence
-- Advanced Study AI Research Assistant: Using AI tools to find reliable information, summarize complex lessons, and condense topics.
-- AI Text-to-Speech for Easy Study: Utilizing AI voice technology for reading study materials aloud.
-- AI-Powered Quizzes & Flashcards: Generating personalized quizzes and digital flashcards.
-
-Module 3: Creative Multimedia & Content Creation
-- AI Video Content Creation: Producing short videos using AI tools for scripting, editing, and effects.
-- Podcast Production: Planning, recording, and editing podcast episodes using AI for sound cleaning.
-- Short Video Animations: Creating engaging animated clips using simplified AI animation tools.
-
-Module 4: Visual Design & Storytelling with AI
-- Creating Powerful Slide Presentations: Using AI to design visually compelling presentations.
-- AI Image Generation: Learning "prompting" to generate unique, high-quality images.
-- Writing Powerful Storybooks: Combining generated images with AI-assisted writing tools.
-
-Module 5: Advanced AI Skills: Music & Prompt Engineering
-- Music Creation: Composing original melodies and beats with AI tools.
-- Prompt Engineering Simplified: Mastering the skill of giving clear instructions to AI systems.
-- Generating Flyer Designs with AI: Creating professional-looking digital flyers.
-
-Requirements:
-1. Ages 7-20 (Adults also welcome).
-2. Access to Computer, Laptop, or Tablet.
-3. Stable Internet connection.
-4. Parental consent.
-5. Agreement to schedule.
+Contact: WhatsApp 2348125650249 | Email skillhivedigitalagency@gmail.com
 `;
 
 export const MODULES: CourseModule[] = [
