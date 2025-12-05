@@ -30,7 +30,7 @@ const getApiKey = (): string => {
 
 export const generateAIResponse = async (userMessage: string): Promise<string> => {
   try {
-    const response = await fetch('https://aiinnovatorprograms.vercel.app/api/gemini', {
+    const response = await fetch('https://ainnovatorprograms.vercel.app/api/gemini', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
