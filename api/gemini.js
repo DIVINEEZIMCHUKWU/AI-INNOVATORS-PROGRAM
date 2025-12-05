@@ -1,12 +1,12 @@
-import { GoogleGenAI } from "@google/genai";
-import { SYLLABUS_CONTEXT } from '../constants.js';
+const { GoogleGenAI } = require("@google/genai");
+const { SYLLABUS_CONTEXT } = require('../constants.js');
 
 // Initialize Gemini with server-side API key
 const ai = new GoogleGenAI({ 
   apiKey: process.env.GEMINI_API_KEY 
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
