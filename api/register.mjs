@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY || '');
 export default async function handler(req, res) {
   // Set CORS headers for all requests
   const origin = req.headers.origin;
-  const allowedOrigins = ['https://innovator.name.ng', 'https://aiprograms-theta.vercel.app'];
+  const allowedOrigins = ['https://innovator.name.ng', 'https://aiprograms.vercel.app'];
   
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
