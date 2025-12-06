@@ -90,24 +90,25 @@ Dear ${parentName},
 
 Thank you for registering ${studentName} for the AI Young Innovators Program!
 
-Registration Details:
-• Student: ${studentName}
-• Age: ${age}
-• Email: ${email}
-• Phone: ${phone}
+We are truly honored to be entrusted with your child’s growth, and we don’t take that responsibility lightly.
+Over the years, we’ve successfully trained 70+ kids and teens, helping them think smarter, solve problems creatively, and gain real digital skills that give them a strong advantage in today’s fast-changing world.
 
-Next Steps:
-1. Our team will review your application
-2. We'll contact you via WhatsApp shortly to finalize enrollment
-3. You'll receive details about the weekend virtual training schedule
+Your child is now about to experience the same powerful learning journey.
+Before we proceed to finalize the enrollment, I’d love to offer you a brief Clarity Call or WhatsApp chat just to ensure you have complete understanding of the program structure, schedule, learning outcomes, and payment process.
 
-If you have any questions, feel free to reply to this email or contact us:
-• WhatsApp: https://wa.me/2348125650249
-• Email: skillhivedigitalagency@gmail.com
+This call is simply to help you feel confident and fully aware of what your child will gain.
 
-We're excited to have ${studentName} join our program!
+Would you like us to hop on a Clarity Call today?
+Or should we continue the conversation on WhatsApp for quicker guidance?
+Once you’re comfortable and all questions are answered, we can finalize your child’s participation by completing the payment.
+For easy communication, please feel free to reach me directly:
+📞 Call: 09031433152
+💬 WhatsApp: 08125650249
+
+We're excited to have ${studentName} into this revolutionary learning experience and help them build skills that will shape their future.
 
 Best regards,
+Comr. Divine Ezimchukwu
 AI Young Innovators Program Team
       `,
       replyTo: process.env.RESEND_TO?.split(',')[0]?.trim() || 'skillhivedigitalagency@gmail.com',
